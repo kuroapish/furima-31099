@@ -1,24 +1,61 @@
-# README
+# furimaのテーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | not null    |
+| e_mail          | string | not null    |
+| password        | string | not null    |
+| first_name      | string | not null    |
+| last_name       | string | not null    |
+| first_name_kana | string | not null    |
+| last_name_kana  | string | not null    |
+| birthday        | date   | not null    |
 
-* Ruby version
+association
+ has_many:items
+ has_many:addresses
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column           | Type       | Options                     |
+| ---------------- | ---------- | --------------------------- |
+| name             | string     | not null                    |
+| item_description | text       | not null                    |
+| item_category    | integer    | not null                    |
+| item_condition   | integer    | not null                    |
+| delivery_fee     | integer    | not null                    |
+| ship_form        | integer    | not null                    |
+| days             | integer    | not null                    |
+| price            | integer    | not null                    |
+| user             | references | not null, foreign_key: true |
 
-* Database creation
+association
+ belongs_to:user
+ has_one:purchase
 
-* Database initialization
+## addresses テーブル
 
-* How to run the test suite
+| Column        | Type      | Options     |
+| ------------- | --------- | ----------- |
+| postal_cord   | integer   | not null    |
+| prefectures   | integer   | not null    |
+| city          | string    | not null    |
+| address       | string    | not null    |
+| building_name | string    | not null    |
+| phone_number  | integer   | not null    |
 
-* Services (job queues, cache servers, search engines, etc.)
+association
+ belongs_to:purchase
 
-* Deployment instructions
+## purchases テーブル
+| Column | Type       | Options                     |
+| ------ | ---------- | --------------------------- |
+| user   | references | not null, foreign_key: true |
+| item   | references | not null, foreign_key: true |
 
-* ...
+association
+ belongs_to:user
+ belongs_to:item
+ has_one:address
