@@ -36,21 +36,23 @@ condition_id(active_hash)
 
 association
  belongs_to:user
- has_one:purchases
+ has_one:purchase
 
 ## addresses テーブル
 
-| Column        | Type      | Options       |
-| ------------- | --------- | ------------- |
-| postal_cord   | string    | null:false    |
-| prefectures_id| integer   | null:false    |
-| city          | string    | null:false    |
-| address       | string    | null:false    |
-| building_name | string    |               |
-| phone_number  | string    | null:false    |
+| Column        | Type      | Options                      |
+| ------------- | --------- | ---------------------------- |
+| postal_cord   | string    | null:false                   |
+| prefectures_id| integer   | null:false                   |
+| city          | string    | null:false                   |
+| address       | string    | null:false                   |
+| building_name | string    |                              |
+| phone_number  | string    | null:false                   |
+| purchase      | references| null:false, foreign_key: true|
+
 
 association
- belongs_to:prefecture
+ belongs_to:purchase
 
 ## purchases テーブル
 | Column | Type       | Options                       |
