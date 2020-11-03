@@ -15,41 +15,44 @@
 
 association
  has_many:items
- has_many:prefectures
+ has_many:purchases
 
 ## items テーブル
 
-| Column           | Type       | Options                      |
-| ---------------- | ---------- | ---------------------------- |
-| name             | string     | null:false                   |
-| description      | text       | null:false                   |
-| category_id      | integer    | null:false                   |
-| condition_id     | integer    | null:false                   |
-| delivery_fee_id  | integer    | null:false                   |
-| ship_form_id     | integer    | null:false                   |
-| days_id          | integer    | null:false                   | 
-| price            | integer    | null:false                   |
-| user             | references | null:false, foreign_key: true|
+| Column                       | Type       | Options                      |
+| ---------------------------- | ---------- | ---------------------------- |
+| name                         | string     | null:false                   |
+| description                  | text       | null:false                   |
+| category_id(active_hash)     | integer    | null:false                   |
+| condition_id(active_hash)    | integer    | null:false                   |
+| delivery_fee_id(active_hash) | integer    | null:false                   |
+| ship_form_id(active_hash)    | integer    | null:false                   |
+| days_id(active_hash)         | integer    | null:false                   | 
+| price                        | integer    | null:false                   |
+| user                         | references | null:false, foreign_key: true|
+category_id(active_hash)
+condition_id(active_hash)
+
 
 association
  belongs_to:user
- has_one:prefecture
+ has_one:purchases
 
 ## addresses テーブル
 
 | Column        | Type      | Options       |
 | ------------- | --------- | ------------- |
 | postal_cord   | string    | null:false    |
-| prefectures   | integer   | null:false    |
-| city_id       | string    | null:false    |
+| prefectures_id| integer   | null:false    |
+| city          | string    | null:false    |
 | address       | string    | null:false    |
-| building_name | string    | null:false    |
+| building_name | string    |               |
 | phone_number  | string    | null:false    |
 
 association
  belongs_to:prefecture
 
-## prefectures テーブル
+## purchases テーブル
 | Column | Type       | Options                       |
 | ------ | ---------- | ----------------------------- |
 | user   | references | null:false, foreign_key: true |
