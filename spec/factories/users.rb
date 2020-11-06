@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :user do
     nickname              { Faker::Name.initials }
     email                 { Faker::Internet.free_email }
@@ -9,6 +8,6 @@ FactoryBot.define do
     first_name            { Gimei.first.kanji }
     last_name_kana        { Gimei.last.katakana }
     first_name_kana       { Gimei.first.katakana }
-    birthday              { Faker::Date.backward }
+    birthday              { Faker::Date.birthday }
   end
 end
