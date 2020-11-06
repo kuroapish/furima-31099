@@ -72,7 +72,7 @@ RSpec.describe User, type: :model do
       end
 
 
-      it 'passwordとその再入力が同一ででないと登録できない' do
+      it 'passwordとその再入力が同一でないと登録できない' do
         @user.password = "aaaaaa"
         @user.password_confirmation = 'cccccc'
         @user.valid?
