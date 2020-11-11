@@ -17,7 +17,7 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :delivery_fee_id
     validates :ship_form_id
-    validates :days_id
+    validates :day_id
     validates :price, inclusion: { in: 300..9999999, message: '300円〜9,999,999円の間で入力してください' }, numericality:{ message: '半角数字で入力してください' }
     validates :user
   end
@@ -27,7 +27,7 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :delivery_fee_id
     validates :ship_form_id
-    validates :days_id
+    validates :day_id
   end
 
 end
