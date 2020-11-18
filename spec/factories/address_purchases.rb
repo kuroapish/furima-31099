@@ -6,5 +6,7 @@ FactoryBot.define do
     phone_number   { '08011112222' }
     city           { '市町村' }
     address        { '1-2-3' }
+    user_id        { 5 }
+    item_id        { 5 }
   end
 end

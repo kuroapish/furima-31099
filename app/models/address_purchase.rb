@@ -8,7 +8,9 @@ class AddressPurchase
     validates :city
     validates :address
     validates :phone_number,     format: { with: /\A\d{11}\z/, message: '数字のみで11文字以内で入力してください' }
-    validates :token, presence: true
+    validates :token
+    validates :user_id
+    validates :item_id
   end
 
   def save
