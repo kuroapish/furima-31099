@@ -10,17 +10,14 @@ RSpec.describe AddressPurchase, type: :model do
       it '商品購入フォームに正しい情報が存在すれば購入できる' do
         expect(@address_purchase).to be_valid
       end
-   end
-
-   context '新規登録に失敗する場合' do
-      it '商品購入フォームに正しい情報が存在すれば購入できる' do
-        expect(@address_purchase).to be_valid
-      end
 
       it 'building_nameが空でも購入できる' do
         @address_purchase.building_name = nil
         expect(@address_purchase).to be_valid
       end
+   end
+
+   context '新規登録に失敗する場合' do
 
       it 'tokenが空では購入できない' do
         @address_purchase.token = nil
@@ -61,6 +58,13 @@ RSpec.describe AddressPurchase, type: :model do
       it 'phone_numberが12桁以上だと購入できない' do
         @address_purchase.phone_number = '080111122223'
         @address_purchase.valid?
+        expect(@address_purchase.errors.full_messages).to include('Phone number 数字のみで11文字以内で入力してください')
+      end
+
+      it 'phone_numberにハイフンが入っていると購入できない' do
+        @address_purchase.phone_number = '080-000-000'
+        @address_purchase.valid?
+        binding.pry
         expect(@address_purchase.errors.full_messages).to include('Phone number 数字のみで11文字以内で入力してください')
       end
 
