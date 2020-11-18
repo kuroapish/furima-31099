@@ -64,7 +64,6 @@ RSpec.describe AddressPurchase, type: :model do
       it 'phone_numberにハイフンが入っていると購入できない' do
         @address_purchase.phone_number = '080-000-000'
         @address_purchase.valid?
-        binding.pry
         expect(@address_purchase.errors.full_messages).to include('Phone number 数字のみで11文字以内で入力してください')
       end
 
